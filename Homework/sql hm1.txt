@@ -1,0 +1,110 @@
+/*решил добавить primary key, чтобы понять, как с ним взаимодействовать*/
+/*1.
+Создать таблицу группа (имя, рейтинг, курс)
+добавить 3 любые группы
+показать группы(имя рейтинг и курс) рейтинг, которых меньше либо равен 50
+*/
+-- create database homework;
+use homework;
+-- create table group1(
+-- id int(10) not null auto_increment,
+-- name_group nvarchar(10) not Null,
+-- rating int(3) not null,
+-- course int(1) not null,
+-- primary key (id)
+-- );
+-- insert into group1(name_group,rating,course)
+-- Value
+-- ('K21',100,4),
+-- ('K24',20,3),
+-- ('M40',69,1);
+-- select * from group1
+/*select name_group from group1  where rating <= 50;*/
+
+/*
+2.
+Создать таблицу оружие(имя, тип, мощность)
+добавить 3 любых оружия
+показать оружия(имя, тип и мощность) мощность, которых равна 200
+*/ 
+/*create table guns(
+id int(10) not null auto_increment,
+name_guns nvarchar(10) not null,
+type_guns nvarchar(10) not null,
+power int(5),
+primary key (id)
+);
+insert into guns(name_guns,type_guns,power)
+value
+('Clock','Pistol',120),
+('AK-74','Auto',500),
+('Colt','Pistol',200);
+select * from guns where power = 200;
+*/
+
+/*3.
+Создать таблицу игры (имя игры, дата и время сохранения)
+добавить 3 любые игры 
+показать все записи игр
+*/
+
+/*create table play(
+id int(10) not null auto_increment,
+name_play nvarchar(30),
+date_play nvarchar(30) not null,
+time_save nvarchar(30) not null,
+primary key(id)
+);
+insert into play (name_play,date_play,time_save)
+Value
+('GTA-5','14/10/2018','9:38 14 october 2015'),
+('CSGO','13/05/2020','11:00'),
+('Minsraft','31/01/21','23:00');
+select * from play;
+*/
+
+/*4.
+Создать таблицу врачи(имя, должность, ставка)
+добавить 3 любых врача
+показать всех врачей(имя должность ставка), должность которых равна Хирург
+*/
+
+/*create table doctor(
+id int(10)  not null auto_increment,
+name_doctor nvarchar(10),
+job_title nvarchar(10) not null,
+prise int(7) not null,
+primary key(id)
+);
+insert into doctor (name_doctor,job_title,prise)
+value
+("Иван", "Хирург",500000),
+("Наташа","Медсестра", 60000),
+("Олег","Лор",100000),
+("Максим","Хирург",600000);
+select * from doctor where job_title = 'Хирург'
+
+*/
+
+/*5.
+Создать таблицу занятие (тип, дата, стоимость)
+добавить 3 любых занятия
+показать все занятия, тип которых соответствует английский
+*/
+/*
+create table lesson(
+id int(10) not null auto_increment,
+type_lesson nvarchar(30) not null,
+date_lesson nvarchar(10) not null,
+price int(10) not null,
+primary key (id)
+);
+
+insert into lesson(type_lesson,date_lesson,price)
+Value
+('Русский язык',"8:30", 1000),
+("Английский язык","10:00",700),
+("Инглиш",'12:00',900);
+*/
+/*Решил посмотреть, как работает сложный запрос*/
+select * from lesson where type_lesson = 'Английский язык' or type_lesson = 'Инглиш';
