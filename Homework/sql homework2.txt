@@ -1,0 +1,42 @@
+create table if not exists coffee(
+id INTEGER not null primary key AUTOINCREMENT,
+namec nvarchar(10) not null,
+price int(4),
+volume int(5) 
+);
+
+create table if not EXISTS barista(
+id integer not null primary key AUTOINCREMENT,
+nameb nvarchar(10)
+);
+create table if not exists change(
+data nvarchar(10),
+id_c integer,
+id_b integer,
+FOREIGN KEY (id_c) REFERENCES coffee (id),
+foreign key (id_b) REFERENCES barista(id)
+);
+
+insert into coffee(namec,price,volume) VALUES
+('Экспрессо',400,100),
+('Капучино',500,200),
+('Латте',250,200);
+
+insert into barista (nameb) VALUES
+('Maksim'),
+('Petr'),
+('Ivan'),
+('Oleg'),
+('Sergey');
+insert into change VALUES
+('10 октября',1,1),
+('10 октября',1,2),
+('10 октября',3,5),
+('11 октября',2,4),
+('11 октября',3,4),
+('12 октября',2,3),
+('12 октября',2,5),
+('13 октября',1,5),
+('13 октября',3,3);
+SELECT * from coffee, barista, change
+where coffee.namec = 'Экспрессо' and change.id_c = coffee.id and change.id_b = barista.id
