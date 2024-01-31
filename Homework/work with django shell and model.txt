@@ -1,0 +1,55 @@
+#
+python manage.py shell
+
+from films.models import Genres
+
+
+Genres(title="Боевик", content="это жанр боевик...") # сформировали запрос (типа insert)
+genres1 = _
+genres2 = Genres(title="Комедия", content="это жанр Комедия...")
+
+
+
+методы класса queryset
+#----------------------- insert -----------------------#
+genres1.save() # insert into Genres(title, content) values("Боевик","это жанр боевик...")
+
+insert into Genres(title, content) values(("Боевик","это жанр боевик..."),("Комедия","это жанр Комедия..."), (...))
+
+
+
+# ------------------------------ Update ---------------------- #
+genres1.title = "genres_name"
+genres1.save(update_fields=["title"])
+Genres.objects.filter(id=2).update(title="Ужасы")
+
+
+# ------------------------------ Read (select) ---------------------- #
+Genres.objects.all() ->
+<QuerySet [<Genres: Genres object (1)>, <Genres: Genres object (2)>]>
+
+Genres.objects.filter(id=2)
+Genres.objects.get(id=1)
+
+
+# ------------------------------ delete  ---------------------- #
+Genres.objects.filter(id=2).delete()
+
+
+
+
+
+# ------------------------------ sql  ---------------------- #
+from django.db import connection
+connection.queries - > список словарей с запросами sql
+
+
+# ------------------------------ ленивые запросы  ---------------------- #
+Genres.objects.all() # нет sql запросов
+Genres.objects.all()[0].title  #происходит запрос к БД
+
+
+
+> for g in Genres.objects.all():
+...     g.foto = '/films/static/films/images/movie_base.jpg'
+...
